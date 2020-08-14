@@ -1,4 +1,4 @@
-import { container, container, container } from 'tsyringe';
+import { container } from 'tsyringe';
 
 import ICustomersRepository from '@modules/customers/repositories/ICustomersRepository';
 import CustomersRepository from '@modules/customers/infra/typeorm/repositories/CustomersRepository';
@@ -10,7 +10,16 @@ import IOrdersRepository from '@modules/orders/repositories/IOrdersRepository';
 import OrdersRepository from '@modules/orders/infra/typeorm/repositories/OrdersRepository';
 
 container.registerSingleton<ICustomersRepository>(
-  'CustomersRepository'
+  'CustomersRepository',
   CustomersRepository,
+);
 
-)
+container.registerSingleton<IProductsRepository>(
+  'ProductsRepository',
+  ProductsRepository,
+);
+
+container.registerSingleton<IOrdersRepository>(
+  'OrdersRepository',
+  OrdersRepository,
+);
